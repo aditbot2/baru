@@ -29,9 +29,9 @@ browser: ['Chrome (Linux)', '', ''],
 
 if (!ptz.authState.creds.registered) {
 const phoneNumber = await question('Masukan nomor kamu\n');
-let code = await ptz.requestPairingCode(phoneNumber);
-code = code?.match(/.{1,4}/g)?.join("-") || code;
-console.log(`Kode :`, code);
+const code = await ptz.requestPairingCode(phoneNumber.trim())
+console.log(`Kode: ${code}`)
+  
 }
 
 store.bind(ptz.ev)
